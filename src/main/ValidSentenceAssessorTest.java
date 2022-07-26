@@ -13,7 +13,8 @@ public class ValidSentenceAssessorTest {
     ArrayList<String> incorrectlyFailed;
     ArrayList<String> incorrectlyPassed;
 
-    // Note: Please forgive the messy string construction, could improve this with ArrayUtils
+    // Note: Please forgive the messy string construction, could improve this with
+    // ArrayUtils
 
     String[] validFullAssessmentStrings = { "The quick brown fox said \"hello Mr lazy dog\".",
             "The quick brown fox said hello Mr lazy dog.", "One lazy dog is too few, 13 is too many.",
@@ -61,8 +62,10 @@ public class ValidSentenceAssessorTest {
         incorrectlyPassed = new ArrayList<>();
     }
 
-    // Each of the below test cases are essentially idential: if any string is incorrectly returned true or false by the tested method, they will be listed by the assertion
-    // Could avoid this repetition with function pointers in C++
+    // Each of the below test cases are essentially idential: if any string is
+    // incorrectly returned true or false by the tested method, they will be listed
+    // by the assertion
+    // > Could avoid this repetition with function pointers in C++...
 
     @Test
     @DisplayName("String should start with a capital letter")

@@ -12,7 +12,8 @@ public class ValidSentenceAssessor {
     }
 
     public ValidSentenceAssessor(Level loggingLevel) {
-        Handler handlerObj = new ConsoleHandler(); // Log to console for convienience
+        // Note: Logging to console for the purposes of this exercise, for convienience
+        Handler handlerObj = new ConsoleHandler();
         handlerObj.setLevel(loggingLevel);
         log.addHandler(handlerObj);
         log.setLevel(loggingLevel);
@@ -82,8 +83,8 @@ public class ValidSentenceAssessor {
     // > Ends with a termination character, ie, ".", "?", "!" ===================
     // > String contains no termination characters other than the last letter ===
     // Note: combining these two requirements into one pattern represents a more
-    // efficient solution than seperating them; although logging will be less
-    // clear. This has been kept seperate from initialCapitalPattern for that
+    // efficient solution than seperating them; although testing/logging will be
+    // less clear. This has been kept seperate from initialCapitalPattern for that
     // reason, though the three requirments could be combined into
     // "^[A-Z][^.!?]*[.?!]$"
     boolean containsTerminationCharacterOnlyAtEnd(String candidate) {
@@ -101,9 +102,9 @@ public class ValidSentenceAssessor {
 
     // Numbers 0-12 inclusive are spelled out in words ==========================
     // Assumption: Any word containing any non-numerical characters alongside
-    // numerals will be exempt from this requirement, as these would represent,
-    // eg, negative numbers, other mathematical expressions, usernames, urls, etc.
-    // More broadly, the presence of any other character surrounding a "spelled out"
+    // numerals will be exempt from this requirement, as these would represent, eg,
+    // negative numbers, other mathematical expressions, usernames, urls, etc. More
+    // broadly, the presence of any other character surrounding a "spelled out"
     // number would render that number meaningless in normal usage. Thus, the regex
     // only matches a word containing any number of digits
     boolean numbersBelowThirteenSpelled(String candidate) {
@@ -116,12 +117,10 @@ public class ValidSentenceAssessor {
         for (String word : candidateWords) {
 
             // Match a number, which may be surrounded by, but does not contain, punctuation
-            // (to account
-            // for the end of sentences, commas, quotation marks, etc), but excluding
-            // mathematical symbols
-            // from a match (mostly to allow negative numbers to pass - words with any
-            // symbols except at the
-            // start or end are already excluded).
+            // (to account for the end of sentences, commas, quotation marks, etc), but
+            // excluding mathematical symbols from a match (mostly to allow negative numbers
+            // to pass - words with any symbols except at the start or end are already
+            // excluded).
             if (numericalPattern.matcher(word).matches() && !mathematicalSymbolsPattern.matcher(word).find()) {
 
                 // Strip leading and trailing punctuation
